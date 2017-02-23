@@ -9,8 +9,9 @@
   "author": "reekoh",
   "license": "GPL-3.0",
   "dependencies": {
-    "reekoh": "^1.0.0",
-    "raygun": "^0.8.0"
+    "amqplib": "^0.5.1",
+    "raygun": "^0.8.0",
+    "reekoh": "^1.0.0"
   },
   "devDependencies": {
     "gulp": "^3.9.1",

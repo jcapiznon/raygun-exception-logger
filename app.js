@@ -5,16 +5,18 @@ const _plugin = new reekoh.plugins.ExceptionLogger()
 
 let raygunClient =  null
 
-platform.on('error', (error) => {
+_plugin.on('exception', (error) => {
+  console.log('-exception- ', error )
   raygunClient.send(error, {}, (response) => {
-    if (response.statusCode === 202) return;
+    if (response.statusCode === 202) return
 
     console.error('Error on Raygun.', response.statusMessage)
     _plugin.logException(new Error(response.statusMessage))
   })
 })
 
-platform.once('ready', () => {
+_plugin.once('ready', () => {
+  console.log('-ready-')
   let raygun = require('raygun')
   raygunClient = new raygun.Client().init({ apiKey: _plugin.config.apiKey})
 

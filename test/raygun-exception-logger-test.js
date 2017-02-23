@@ -25,7 +25,7 @@ describe('Raygun Exception Logger', function () {
     })
   })
 
-  after('terminate child process', function () {
+  after('terminate child process', function (done) {
     _conn.close()
     done()
   })
@@ -39,7 +39,7 @@ describe('Raygun Exception Logger', function () {
   })
 
   describe('#exception', function () {
-    it('should log data', function (done) {
+    it('should log exception data', function (done) {
       this.timeout(15000)
       let dummyData = new Error('test')
       _channel.sendToQueue('demo.pipe.exception-logger', new Buffer(JSON.stringify({message: dummyData.message, stack: dummyData.stack, name:dummyData.name})))
